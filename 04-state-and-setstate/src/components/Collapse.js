@@ -4,8 +4,7 @@ import React from 'react';
 class Collapse extends React.Component {
 
     constructor() {
-        /* extends ettiğim React.Component'in içerisindeki constructor metoduna ait olan tüm özellikleri almamızı sağlar  */
-        super();
+        super(); /* extends ettiğim React.Component'in içerisindeki constructor metoduna ait olan tüm özellikleri almamızı sağlar  */
 
         /* Stateti oluşturuyorum */
         this.state = {
@@ -16,13 +15,19 @@ class Collapse extends React.Component {
         /* Props ve state kullanımları benzerdir fakat onları ayıran en temel fark budur. */
     }
 
+    showMore = () => {
+        /* Statei bulunduğu durumun tersine çevirir */
+        /* setState metodu render() metodunun tekrar çalışması için tetikleyicidir */
+        this.setState({showContent: !this.state.showContent});
+    }
+
     render() {
         return (
             <div>
                 <p>
-                    <a className="btn btn-primary w-100">
+                    <button className="btn btn-primary w-100" onClick={this.showMore}>
                         Link with href
-                    </a>
+                    </button>
                 </p>
                 {
                     /* Eğer state true ise cardı göster değilse kapat */
