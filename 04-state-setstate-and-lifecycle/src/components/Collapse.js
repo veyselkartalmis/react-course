@@ -25,7 +25,7 @@ class Collapse extends React.Component {
         this.setState({showContent: !this.state.showContent});
     }
 
-    /* Lifecyle Metotlar */
+    /* Lifecycle Metotlar */
 
     /* componentDidMount() metodu component'in render metodundan sonra çalışır */
     componentDidMount(){
