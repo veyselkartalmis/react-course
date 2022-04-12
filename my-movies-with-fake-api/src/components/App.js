@@ -1,37 +1,15 @@
 import React from "react";
 import SearchBar from "./SearchBar";
 import MovieList from "./MovieList";
+import AddMovie from "./AddMovie";
 import axios from "axios";
+import { BrowserRouter, Routes, Route, } from "react-router-dom";
 
 class App extends React.Component {
     state = {
         movies: [],
         searchQuery: ""
     }
-
-    /* ---------FETCH API ile işlemler--------- */
-    /* async componentDidMount() {
-        const baseURL = "http://localhost:3002/movies";  Fake Rest API kaynağım 
-        const response = await fetch(baseURL);
-        const data = await response.json();
-        this.setState({ movies: data });
-    } */
-
-    /* deleteMovie = async (movie) => {
-        const baseURL = `http://localhost:3002/movies/${movie.id}`;
-        await fetch(baseURL, {
-            method: "DELETE"
-        })
-        const newMovieList = this.state.movies.filter(
-            m => m.id !== movie.id
-        );
-
-        this.setState( state => ({
-            movies: newMovieList
-        }))
-    } */
-    /* ---------FETCH API ile işlemler--------- */
-
 
     /* ---------AXIOS API ile işlemler--------- */
     async componentDidMount() {
@@ -73,6 +51,7 @@ class App extends React.Component {
                     movies={filteredMovies}
                     deleteMovieProp={this.deleteMovie}
                 />
+                <AddMovie />
             </div>
         )
     }
