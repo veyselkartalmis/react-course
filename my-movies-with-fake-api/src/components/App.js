@@ -42,16 +42,24 @@ class App extends React.Component {
 
         return (
             <div className="container">
-                <div className="row">
-                    <div className="col-lg-12">
-                        <SearchBar searchMovieProp={this.searchMovie} />
-                    </div>
-                </div>
-                <MovieList
-                    movies={filteredMovies}
-                    deleteMovieProp={this.deleteMovie}
-                />
-                <AddMovie />
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={
+                            <React.Fragment>
+                                <div className="row">
+                                    <div className="col-lg-12">
+                                        <SearchBar searchMovieProp={this.searchMovie} />
+                                    </div>
+                                </div>
+                                <MovieList
+                                    movies={filteredMovies}
+                                    deleteMovieProp={this.deleteMovie}
+                                />
+                            </React.Fragment>
+                        } />
+                        <Route path="/add" element={<AddMovie />} />
+                    </Routes>
+                </BrowserRouter>
             </div>
         )
     }
