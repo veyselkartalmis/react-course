@@ -1,19 +1,31 @@
 import { useContext, useState, useEffect } from "react";
 import Employee from "./Employee";
 import { EmployeeContext } from "../contexts/EmployeeContexts";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Alert } from "react-bootstrap";
 import AddForm from "./AddForm";
 
 const EmployeeList = () => {
     const { employees } = useContext(EmployeeContext);
     const [show, setShow] = useState(false);
+    const [showAlert, setShowAlert] = useState(false);
 
     /* Modalın açılıp kapanması için gereken setState fonksiyonları */
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
+    /* Gelen alert mesajının 2 sn sonra otomatik olarak kapanması için yazdığım kod */
+    const handleShowAlert = () => {
+        setShowAlert(true);
+        setTimeout(() => {
+            setShowAlert(false);
+        }, 3000);
+    };
+
     useEffect(() => { /* Koşula bağlı olarak veya olmayarak herhangi bir değişikiklikte yapılacak işlemi belirtebilirsin */
         handleClose();
+        return () => {
+            handleShowAlert();
+        };
     }, [employees]) /* employees dizisinde değişiklik olduğunda handleClose() çalışacaktır */
 
     return (
@@ -28,6 +40,11 @@ const EmployeeList = () => {
                     </div>
                 </div>
             </div>
+
+            <Alert show={showAlert} variant="success">
+                Employee list successfully updated.
+            </Alert>
+
             <table className="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -40,9 +57,9 @@ const EmployeeList = () => {
                 </thead>
                 <tbody>
                     {
-                        employees.map((employee) => (
+                        employees.sort((a,b) => a.name.localeCompare(b.name)).map((employee) => (
                             <tr key={employee.id}>
-                                <Employee employee={employee}/>
+                                <Employee employee={employee}/> {/* Yazılan sort fonksiyonu A'dan Z'ye sıralama yapar */}
                             </tr>
                         ))
                     }

@@ -163,6 +163,7 @@ table.table .avatar {
   border-radius: 2px;
   box-shadow: none;
   border-color: #dddddd;
+  margin-bottom: 15px;
 }
 .modal textarea.form-control {
   resize: vertical;
@@ -174,4 +175,6 @@ table.table .avatar {
 .modal form label {
   font-weight: normal;
 }
-.table-responsive{overflow-x: unset !important;}
+.table-responsive {
+  overflow-x: unset !important;
+}
