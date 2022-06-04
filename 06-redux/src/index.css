@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.active {
+  background: red;
+  color: #fff;
+}
+
+button {
+  transition: all .4s;
+}
+
+.dark {
+  background: #000;
+  color: #fff;
+}
+
+.light {
+  background: #ddd;
+  color: #000;
+}
